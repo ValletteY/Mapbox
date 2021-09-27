@@ -10,8 +10,9 @@ var donnees = {
             },
         "properties": 
             {
-            "title": "Mapbox",
-            "description": "qsqsqsqsqss"
+            "title": "Chez paul",
+            "validation":true,
+            "description": "On est passé"
             }
         },
         {
@@ -23,8 +24,52 @@ var donnees = {
             },
         "properties": 
             {
-            "title": "Mapbox",
-            "description": "azdazdazdzad"
+            "title": "Chez jean",
+            "validation":false,
+            "description": " pas encore passé"
+            }
+        },
+        
+        {
+        "type": "Feature",
+        "geometry": 
+            {
+            "type": "Point",
+            "coordinates": [2.37, 48.81]
+            },
+        "properties": 
+            {
+            "title": "Chez Marcel",
+            "validation":false,
+            "description": " pas encore passé"
+            }
+        },
+        {
+        "type": "Feature",
+        "geometry": 
+            {
+            "type": "Point",
+            "coordinates": [2.38, 48.815]
+            },
+        "properties": 
+            {
+            "title": "Chez Louis",
+            "validation":false,
+            "description": " ca semble marché"
+            }
+        },
+        {
+        "type": "Feature",
+        "geometry": 
+            {
+            "type": "Point",
+            "coordinates": [2.395, 48.805]
+            },
+        "properties": 
+            {
+            "title": "Chez Arthur",
+            "validation":true,
+            "description": " presque"
             }
         }
     ]

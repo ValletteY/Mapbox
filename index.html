@@ -12,7 +12,9 @@
 <body>
 
 <div id='map'></div>
+<!-- introduction de la map GeoJSON -->
 <script src="donnees/donnees.GeoJSON" type="text/javascript"></script>
+<!-- Dessin de la map dans map -->
 <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoidmFsbGV0dGV5IiwiYSI6ImNrdTJ5dXpsNTF6NHAydnFoZjFtdDI2YmIifQ.0xSLRFQO6OKUBHnonqzVGw';
         const map = new mapboxgl.Map({
@@ -25,14 +27,18 @@
         // Ajout de marker
         for (const { geometry, properties } of donnees.features) {// fichier json à remplacer avec geojson
         const el = document.createElement('div');// création d'un élément (div) pour chaque marqueur
-        el.className = 'marker';
+        //modification du style par validation
+        if (properties.validation == true) 
+        { el.className = 'marker'; }
+        else if ((properties.validation == false))
+        { el.className = 'markerout'; }
         
-        // marker pour chaque point Json
+        
         new mapboxgl.Marker(el)
             .setLngLat(geometry.coordinates)
-            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`))
-            .addTo(map);
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // ajout de popup
+            .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`)) // ecriture dans le popup
+            .addTo(map); //envois du marquage par point
         }
 </script>
 </body>
