@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8' />
+    <title>TEST Mapbox </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+
+<div id='map'></div>
+<script src="donnees/donnees.GeoJSON" type="text/javascript"></script>
+<script>
+        mapboxgl.accessToken = 'pk.eyJ1IjoidmFsbGV0dGV5IiwiYSI6ImNrdTJ5dXpsNTF6NHAydnFoZjFtdDI2YmIifQ.0xSLRFQO6OKUBHnonqzVGw';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v10',
+            center: [2.4, 48.8],
+            zoom: 12
+        });
+      
+        // Ajout de marker
+        for (const { geometry, properties } of donnees.features) {// fichier json à remplacer avec geojson
+        const el = document.createElement('div');// création d'un élément (div) pour chaque marqueur
+        el.className = 'marker';
+        
+        // marker pour chaque point Json
+        new mapboxgl.Marker(el)
+            .setLngLat(geometry.coordinates)
+            .setPopup(new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(`<h3>${properties.title}</h3><p>${properties.description}</p>`))
+            .addTo(map);
+        }
+</script>
+</body>
+</html>
